@@ -20,9 +20,6 @@ abstract class _LoginControllerBase with Store {
     if (username.trim().isEmpty || password.trim().isEmpty) {
       return false;
     }
-    if (password.length < 6) {
-      return false;
-    }
     return true;
   }
 

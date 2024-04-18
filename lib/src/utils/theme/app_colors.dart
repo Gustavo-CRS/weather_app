@@ -9,4 +9,6 @@ class AppColors {
   static const green = Color(0xff00B894);
   static const red = Color(0xffD63031);
   static const pink = Color(0xfff70766);
+  static const darkBlue = Color.fromARGB(255, 38, 3, 95);
+  static const deepBlueGrey = Color(0xFF263238);
 }

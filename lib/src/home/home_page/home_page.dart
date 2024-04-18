@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget {
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: [AppColors.purple, AppColors.mainBlack],
+              colors: [AppColors.purple, AppColors.darkBlue],
             ),
           ),
           child: Column(
@@ -36,15 +36,15 @@ class HomePage extends StatelessWidget {
                         child: Text(
                           'Error',
                           style: TextStyle(
-                            color: AppColors.red,
+                            color: AppColors.white,
                             fontSize: 32,
                           ),
                         ),
                       ),
                       content: Text(
                         'Error: ${controller.error}',
-                        style:
-                            const TextStyle(color: AppColors.red, fontSize: 18),
+                        style: const TextStyle(
+                            color: AppColors.white, fontSize: 18),
                         textAlign: TextAlign.center,
                       ),
                       actions: [
@@ -53,7 +53,10 @@ class HomePage extends StatelessWidget {
                             controller.fetchCurrentLocationWeather();
                           },
                           child: const Center(
-                            child: Text('Try again'),
+                            child: Text(
+                              'Try again',
+                              style: TextStyle(color: AppColors.white),
+                            ),
                           ),
                         ),
                       ],
