@@ -119,7 +119,7 @@ class HomePage extends StatelessWidget {
                             child: Text(
                               'Weather condition: ${controller.description}',
                               style: TextStyle(
-                                fontSize: 24,
+                                fontSize: width >= 600 ? 24 : 20,
                                 fontWeight: FontWeight.normal,
                                 color: AppColors.white.withOpacity(0.8),
                                 fontStyle: FontStyle.italic,
