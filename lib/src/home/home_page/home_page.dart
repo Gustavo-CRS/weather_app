@@ -13,6 +13,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -65,34 +66,69 @@ class HomePage extends StatelessWidget {
                   if (controller.loading) {
                     return const CircularProgressIndicator();
                   }
-                  return Column(
-                    children: [
-                      Text(
-                        controller.temperature,
-                        style: TextStyle(
-                          fontSize: width >= 600 ? 64 : 46,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.white,
-                          shadows: const [
-                            Shadow(
-                              offset: Offset(0, 4),
-                              blurRadius: 4.0,
-                              color: AppColors.secondaryBlack,
+                  return Container(
+                    width: width >= 600 ? width * 0.24 : width * 0.84,
+                    height: height >= 900 ? height * 0.2 : height * 0.3,
+                    child: Card(
+                      elevation: 24,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      shadowColor: AppColors.secondaryBlack,
+                      color: AppColors.deepBlueGrey,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                controller.isCelsius
+                                    ? controller.tempCelsius
+                                    : controller.temperature,
+                                style: TextStyle(
+                                  fontSize: width >= 600 ? 64 : 46,
+                                  fontWeight: FontWeight.bold,
+                                  color: AppColors.white,
+                                  shadows: const [
+                                    Shadow(
+                                      offset: Offset(0, 4),
+                                      blurRadius: 4.0,
+                                      color: AppColors.secondaryBlack,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  controller.changeUnit();
+                                },
+                                child: const Text(
+                                  'Change unit',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: AppColors.white,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 10),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 18),
+                            child: Text(
+                              'Weather condition: ${controller.description}',
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.normal,
+                                color: AppColors.white.withOpacity(0.8),
+                                fontStyle: FontStyle.italic,
+                              ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                      const SizedBox(height: 10),
-                      Text(
-                        'Weather condition: ${controller.description}',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.normal,
-                          color: AppColors.white.withOpacity(0.8),
-                          fontStyle: FontStyle.italic,
-                        ),
-                      ),
-                    ],
+                    ),
                   );
                 },
               ),

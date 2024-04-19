@@ -19,6 +19,17 @@ abstract class _HomeControllerBase with Store {
   @observable
   String error = '';
 
+  @observable
+  String tempCelsius = '';
+
+  @observable
+  bool isCelsius = false;
+
+  @action
+  void changeUnit() {
+    isCelsius = !isCelsius;
+  }
+
   @computed
   bool get loading => temperature.isEmpty && description.isEmpty;
 
@@ -68,6 +79,7 @@ abstract class _HomeControllerBase with Store {
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         temperature = '${data['current']['temp_f']}°F';
+        tempCelsius = '${data['current']['temp_c']}°C';
         description = data['current']['condition']['text'];
       } else {
         throw Exception('Failed to load weather data');

@@ -64,6 +64,38 @@ mixin _$HomeController on _HomeControllerBase, Store {
     });
   }
 
+  late final _$tempCelsiusAtom =
+      Atom(name: '_HomeControllerBase.tempCelsius', context: context);
+
+  @override
+  String get tempCelsius {
+    _$tempCelsiusAtom.reportRead();
+    return super.tempCelsius;
+  }
+
+  @override
+  set tempCelsius(String value) {
+    _$tempCelsiusAtom.reportWrite(value, super.tempCelsius, () {
+      super.tempCelsius = value;
+    });
+  }
+
+  late final _$isCelsiusAtom =
+      Atom(name: '_HomeControllerBase.isCelsius', context: context);
+
+  @override
+  bool get isCelsius {
+    _$isCelsiusAtom.reportRead();
+    return super.isCelsius;
+  }
+
+  @override
+  set isCelsius(bool value) {
+    _$isCelsiusAtom.reportWrite(value, super.isCelsius, () {
+      super.isCelsius = value;
+    });
+  }
+
   late final _$fetchCurrentLocationWeatherAsyncAction = AsyncAction(
       '_HomeControllerBase.fetchCurrentLocationWeather',
       context: context);
@@ -83,12 +115,28 @@ mixin _$HomeController on _HomeControllerBase, Store {
         .run(() => super.fetchWeather(latitude, longitude));
   }
 
+  late final _$_HomeControllerBaseActionController =
+      ActionController(name: '_HomeControllerBase', context: context);
+
+  @override
+  void changeUnit() {
+    final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
+        name: '_HomeControllerBase.changeUnit');
+    try {
+      return super.changeUnit();
+    } finally {
+      _$_HomeControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
 temperature: ${temperature},
 description: ${description},
 error: ${error},
+tempCelsius: ${tempCelsius},
+isCelsius: ${isCelsius},
 loading: ${loading}
     ''';
   }
