@@ -50,11 +50,11 @@ class HomePage extends StatelessWidget {
                       actions: [
                         TextButton(
                           onPressed: () {
-                            controller.fetchCurrentLocationWeather();
+                            Navigator.of(context).pop();
                           },
                           child: const Center(
                             child: Text(
-                              'Try again',
+                              'Close',
                               style: TextStyle(color: AppColors.white),
                             ),
                           ),

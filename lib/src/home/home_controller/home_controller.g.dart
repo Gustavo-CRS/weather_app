@@ -16,18 +16,18 @@ mixin _$HomeController on _HomeControllerBase, Store {
           name: '_HomeControllerBase.loading'))
       .value;
 
-  late final _$fahrenheitTempAtom =
-      Atom(name: '_HomeControllerBase.fahrenheitTemp', context: context);
+  late final _$temperatureAtom =
+      Atom(name: '_HomeControllerBase.temperature', context: context);
 
   @override
   String get temperature {
-    _$fahrenheitTempAtom.reportRead();
+    _$temperatureAtom.reportRead();
     return super.temperature;
   }
 
   @override
   set temperature(String value) {
-    _$fahrenheitTempAtom.reportWrite(value, super.temperature, () {
+    _$temperatureAtom.reportWrite(value, super.temperature, () {
       super.temperature = value;
     });
   }
@@ -86,7 +86,7 @@ mixin _$HomeController on _HomeControllerBase, Store {
   @override
   String toString() {
     return '''
-fahrenheitTemp: ${temperature},
+temperature: ${temperature},
 description: ${description},
 error: ${error},
 loading: ${loading}
