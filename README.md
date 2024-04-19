@@ -1,4 +1,4 @@
-# weather_app
+# Weather App
 
 A mobile/web project for Olly-Olly to see the weather in your current location
 
